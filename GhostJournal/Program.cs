@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GhostJournal
 {
-    static class EvidenceCategoryStatic
+    static class EvidenceCategoryPresentation
     {
         public const string SpiritBox = "Spirit Box";
         public const string FingerPrints = "Fingerprints";
@@ -44,41 +44,48 @@ namespace GhostJournal
             while (!quit)
             {
                 Console.WriteLine("------------------");
-                Console.WriteLine("Hey. Choose from the list. If you choose multiple separate them with comma: \n" +
-                    EvidenceCategoryStatic.SpiritBox + " 1 \n" +
-                    EvidenceCategoryStatic.FingerPrints + " 2 \n" +
-                    EvidenceCategoryStatic.GhostWriting + " 3 \n" +
-                    EvidenceCategoryStatic.FreezingTemperatures + " 4 \n" +
-                    EvidenceCategoryStatic.EMFLevel5 + " 5 \n" +
-                    EvidenceCategoryStatic.GhostOrb + " 6 \n" +
+                Console.WriteLine("Choose evidence from the list. " +
+                    "If you choose multiple evidence, separate them with a comma: \n" +
+                    EvidenceCategoryPresentation.SpiritBox + ": 1 \n" +
+                    EvidenceCategoryPresentation.FingerPrints + ": 2 \n" +
+                    EvidenceCategoryPresentation.GhostWriting + ": 3 \n" +
+                    EvidenceCategoryPresentation.FreezingTemperatures + ": 4 \n" +
+                    EvidenceCategoryPresentation.EMFLevel5 + ": 5 \n" +
+                    EvidenceCategoryPresentation.GhostOrb + ": 6 \n" +
                     "Or type Q to quit. \n ");
                 Console.WriteLine("------------------");
 
+                List<EvidenceCategory> evidenceList = new List<EvidenceCategory>();
                 var filteredGhosts = ghosts;
                 var input = Console.ReadLine();
                 if (input.ToLower() == "q") { quit = true; break; }
                 try
                 {
                     var categories = input.Split(',');
-                    List<EvidenceCategory> evidences = new List<EvidenceCategory>();
-                    foreach(var category in categories) 
+
+                    foreach (var category in categories)
                     {
                         var number = Int32.Parse(category);
-                        evidences.Add((EvidenceCategory)number);
+                        evidenceList.Add((EvidenceCategory)number);
                     };
-                    filteredGhosts = ghosts.Where(ghost => evidences.All(evidence => ghost.EvidenceList.Evidences.Contains(evidence))).ToList();
+                    filteredGhosts = ghosts.Where(ghost => evidenceList.All(evidence => ghost.EvidenceList.Evidences.Contains(evidence))).ToList();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine(input + " is not on the list. Please try again. \n");
                     continue;
                 }
-                 Console.WriteLine();
-                if (filteredGhosts.Count == 0) Console.WriteLine("No ghosts found matching to criteria.");
-                filteredGhosts.ForEach(ghost => {
-                    Console.WriteLine(ghost.ToString());
+                Console.WriteLine();
+                if (filteredGhosts.Count == 0) Console.WriteLine("No ghosts found matching the criteria.");
+                filteredGhosts.ForEach(ghost =>
+                {
+                    Console.WriteLine(ghost.ToString().ToUpper());
                     if (filteredGhosts.Count <= 3)
                     {
+                        var missingEvidence = ghost.EvidenceList.Evidences.Where(e => !evidenceList.Contains(e)).ToList();
+                        Console.WriteLine("Missing evidence: ");
+                        missingEvidence.ForEach(missing => Console.WriteLine(MapCategoryToString(missing)));
+                        Console.WriteLine();
                         Console.WriteLine("Description: ");
                         Console.WriteLine(ghost.Description);
                         Console.WriteLine();
@@ -91,12 +98,30 @@ namespace GhostJournal
                         Console.WriteLine("Unique strength: ");
                         Console.WriteLine(ghost.UniqueStrength);
                         Console.WriteLine();
-                        Console.WriteLine();
-
                     };
 
-                    }
+                }
                 );
+            }
+            string MapCategoryToString(EvidenceCategory category)
+            {
+                switch (category)
+                {
+                    case EvidenceCategory.EMFLevel5:
+                        return EvidenceCategoryPresentation.EMFLevel5;
+                    case EvidenceCategory.FingerPrints:
+                        return EvidenceCategoryPresentation.FingerPrints;
+                    case EvidenceCategory.FreezingTemperatures:
+                        return EvidenceCategoryPresentation.FreezingTemperatures;
+                    case EvidenceCategory.GhostOrb:
+                        return EvidenceCategoryPresentation.GhostOrb;
+                    case EvidenceCategory.GhostWriting:
+                        return EvidenceCategoryPresentation.GhostWriting;
+                    case EvidenceCategory.SpiritBox:
+                        return EvidenceCategoryPresentation.SpiritBox;
+                    default:
+                        throw new Exception($"Category {category} is not supported");
+                }
             }
         }
     }
