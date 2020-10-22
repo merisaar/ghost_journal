@@ -5,3 +5,9 @@ c:\users\merit\source\repos\GhostJournal\GhostJournal\obj\Debug\GhostJournal.csp
 c:\users\merit\source\repos\GhostJournal\GhostJournal\obj\Debug\GhostJournal.csproj.CoreCompileInputs.cache
 c:\users\merit\source\repos\GhostJournal\GhostJournal\obj\Debug\GhostJournal.exe
 c:\users\merit\source\repos\GhostJournal\GhostJournal\obj\Debug\GhostJournal.pdb
+C:\dev\Other projects\ghost_journal\GhostJournal\obj\Debug\GhostJournal.csprojAssemblyReference.cache
+C:\dev\Other projects\ghost_journal\GhostJournal\obj\Debug\GhostJournal.exe
+C:\dev\Other projects\ghost_journal\GhostJournal\obj\Debug\GhostJournal.pdb
+C:\dev\Other projects\ghost_journal\GhostJournal\bin\Debug\GhostJournal.exe.config
+C:\dev\Other projects\ghost_journal\GhostJournal\bin\Debug\GhostJournal.exe
+C:\dev\Other projects\ghost_journal\GhostJournal\bin\Debug\GhostJournal.pdb
