@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="I:\Documents\Personal projects\Plasmophobia\GhostJournal.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Ghosts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,16 +28,16 @@ namespace GhostJournal
                 EvidenceCategory.FreezingTemperatures
                 }
             );
-            UniqueStrength = "Nothing.";
-            Weaknesses = "Using Smudge Sticks on a Spirit will stop it attacking for a long period of time.";
-            Description = "A spirit is the most common Ghost you will come across however it is still very powerful and dangerous. They are usually discovered at one of their hunting grounds after an unexplained death.";
+            UniqueStrength = "A Mare will have an increased chance to attack in the dark.";
+            Weaknesses = "Turning the lights on around the Mare will lower it’s chance to attack.";
+            Description = "A Mare is the source of all nightmares, making it most powerful in the dark.";
         }
     }
     public class Spirit : Ghost
     {
         public Spirit()
         {
-            Name = "Mare";
+            Name = "Spirit";
             EvidenceList =
                 new Evidence(new List<EvidenceCategory>() {
                 EvidenceCategory.SpiritBox,
@@ -45,9 +45,9 @@ namespace GhostJournal
                 EvidenceCategory.FingerPrints
                 }
             );
-            UniqueStrength = "A Mare will have an increased chance to attack in the dark..";
-            Weaknesses = "Turning the lights on around the Mare will lower it’s chance to attack.";
-            Description = "A Mare is the source of all nightmares, making it most powerful in the dark.";
+            UniqueStrength = "Nothing.";
+            Weaknesses = "Using Smudge Sticks on a Spirit will stop it attacking for a long period of time.";
+            Description = "A spirit is the most common Ghost you will come across however it is still very powerful and dangerous. They are usually discovered at one of their hunting grounds after an unexplained death.";
         }
     }
     public class Wraith : Ghost
@@ -88,7 +88,7 @@ namespace GhostJournal
     {
         public Poltergeist()
         {
-            Name = "Phantom";
+            Name = "Poltergeist";
             EvidenceList =
                 new Evidence(new List<EvidenceCategory>() {
                 EvidenceCategory.SpiritBox,
@@ -165,7 +165,7 @@ namespace GhostJournal
                 EvidenceCategory.GhostWriting
                 }
             );
-            UniqueStrength = " Being shy means the Ghost will be harder to find.";
+            UniqueStrength = "Being shy means the Ghost will be harder to find.";
             Weaknesses = " The Ghost will not enter hunting mode if there is multiple people nearby.";
             Description = "A Shade is known to be a Shy Ghost. There is evidence that a Shade will stop all paranormal activity if there are multiple people nearby.";
         }
